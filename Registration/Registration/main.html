@@ -1,0 +1,57 @@
+﻿<div class="wraper" style="margin-left: 80px" ng-controller="mainctrl">
+
+    <h3><b>WELCOME USER  !!!</b></h3>
+    <h5> Users are listed below </h5>
+    <button class="btn btn-default" style="border-radius: 12px;background-color:darkgray;" ng-click="getlist()">List</button>
+
+    <table>
+        <thead>
+        <th>ID </th>
+        <th>First Name  </th>
+        <th>Last Name  </th>
+        <th>Username</th>
+        <th>Email  </th>
+        <th>Password  </th>
+        <th>Mobile  </th>
+        <th>Actions  </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in arr">
+                <td>{{$index+1}}</td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.fname}}</div>
+                    <div ng-show="editdata[x.id]"><input type="text" ng-model="x.fname" /></div>
+                </td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.lname}}</div>
+                    <div ng-show="editdata[x.id]"><input type="text" ng-model="x.lname" /></div>
+                </td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.username}}</div>
+                    <div ng-show="editdata[x.id]"><input type="text" ng-model="x.username" /></div>
+                </td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.email}}</div>
+                    <div ng-show="editdata[x.id]"><input type="email" ng-model="x.email" /></div>
+                </td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.password}}</div>
+                    <div ng-show="editdata[x.id]"><input type="password" ng-model="x.password" /></div>
+                </td>
+                <td>
+                    <div ng-hide="editdata[x.id]">{{ x.mobile}}</div>
+                    <div ng-show="editdata[x.id]"><input type="text" ng-model="x.mobile" /></div>
+                </td>
+
+
+                <td>
+                    <button ng-hide="editdata[x.id]" ng-click="modify(x)">Modify</button>
+                    <button ng-show="editdata[x.id]" ng-click="update(x)">Update</button>
+                    <button ng-click="delete($index)"><i class="fa fa-trash-o fa-lg"></i>delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <span style="float:right"> <a href="#/home"> Log out </a> </span>
+</div>

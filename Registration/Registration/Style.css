@@ -1,0 +1,27 @@
+﻿ 
+    body { padding-top:30px; }
+    .red-text{
+        color:red;
+    }
+  table {
+       border: 1px solid black;
+        width: 100%;
+
+  }
+  th{
+     border: 1px solid black ;
+     padding: 8px;
+  }
+  td{ border: 1px solid black;
+      padding: 8px;
+  }
+div.wraper{
+  border: 1px solid black;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  background-color: lightgray;
+}
+
+

@@ -1,0 +1,38 @@
+<div class="col-md-6 col-md-offset-3">
+    <h3><span class="glyphicon glyphicon-user"></span> Member Login</h3>
+    <form name="ngForm" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" ngModel name="username" #username="ngModel" (change)="log(username)"
+                placeholder="enter username" required />
+            <div class="alert alert-danger" *ngIf="username.touched && ! username.valid">username is required</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ngModel name="password" #password="ngModel"
+                (change)="log(password)" placeholder="enter password" required />
+            <div class="alert alert-danger" *ngIf="password.touched && ! password.valid">password is required</div>
+        </div>
+       <!-- <div class="form-group" >
+              
+                Enter captcha code:
+                <input id="skip_CaptchaCode" name="skip_CaptchaCode"  type="text" style="width:80px; border:1px solid gray" maxlength="6" required/>
+               
+                <a href="http://www.snaphost.com/captcha/ReadyForms/SignUpForm.aspx"><img id="CaptchaImage" alt="sign up form template" title="sign up form template"
+                style="margin-left:20px; border:1px solid gray"
+                src="https://www.SnapHost.com/captcha/CaptchaImage.aspx?id=FLEABK5M549B&ImgType=2" /></a>
+                <br /><a href="" onclick="return ReloadCaptchaImage('CaptchaImage');"><span style="font-size:12px;">reload image</span></a>
+                
+        </div>-->
+
+        <div class="form-actions" layout="row">
+            <input type="button" [disabled]="!f.valid" value="sign-In" (click)="login(username.value,password.value)"
+                class="btn btn-primary">
+            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+            <span style="float:right">Not a member? <a [routerLink]="['/register']"
+                    class="btn btn-link">SignUp</a></span>
+        </div>
+    </form>
+ 
+</div>

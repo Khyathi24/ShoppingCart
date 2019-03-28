@@ -1,0 +1,42 @@
+
+ <div class="container">
+
+  <div class="wraper"  style="background-color:lightgrey;">
+            
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+
+  <div class="form-group" >
+      <label class="control-label col-sm-2" for="username">Username:</label>
+  <input formControlName="username" id="username" name="username"  type="text"  class="form-control"  placeholder="Enter username" required ><br>
+  
+  <div class="alert alert-danger" style="color: red; " *ngIf="form.get('username').touched && !form.get('username').valid">
+    username required</div>
+  <div class="alert alert-danger" style="color: red" *ngIf="form.get('username').errors.minLength && form.get('username').invalid" > username too-short! </div>
+  <div class="alert alert-danger"  style="color: red" *ngIf="form.get('username').errors.maxLength && form.get('username').invalid">username too-long! </div>
+
+  </div>
+  <br>
+  
+  <div class="form-group" >
+    <label for="password">password: </label>
+    <input formControlName="password"  id="password" name="password" type="password"   class="form-control" placeholder="Enter password" required ><br>
+    <span class="alert alert-danger" style="color: red" *ngIf="form.get('password').touched && form.get('password').invalid "> password is required ! </span>
+    
+   </div>
+   <br>
+   <div class="form-group" >
+      <label for="email">Email: </label>
+      <input formControlName="email"  id="email" name="email" type="email"   class="form-control"  placeholder="Enter email" required ><br>
+      <span class="alert alert-danger" style="color: red" *ngIf="form.get('email').touched && form.get('email').invalid"> email is required ! </span>
+   </div>
+
+
+    <button class="submit" [disabled]="!f.valid">submit</button>
+
+ 
+</form>
+</div>
+</div>
+
+
+

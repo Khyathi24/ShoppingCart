@@ -1,0 +1,89 @@
+<h2>Register</h2>
+<div class="col-md-6 col-md-offset-3">
+  <form #signup="ngForm">
+    <div class="form-group">
+      <label for="firstname">FirstName</label>
+      <input type="text" class="form-control" ngModel name="firstname" #firstname="ngModel"
+        placeholder="enter firstname" required />
+      <div class="alert alert-danger" *ngIf="firstname.touched && ! firstname.valid">firstname is required</div>
+    </div>
+
+    <br>
+    <div class="form-group">
+      <label for="lastname">LastName</label>
+      <input type="text" class="form-control" ngModel name="lastname" #lastname="ngModel" placeholder="enter lastname"
+        required />
+      <div class="alert alert-danger" *ngIf="lastname.touched && ! lastname.valid">lastname is required</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" ngModel name="username" #username="ngModel" minlength="3" maxlength="7"
+        placeholder="enter username" required />
+      <div class="alert alert-danger" *ngIf="username.touched && !username.valid"><div class="alert alert-danger" *ngIf="username.errors.minlength">Username is too short</div>
+      <div class="alert alert-danger" *ngIf="username.errors.maxlength">Username is too long</div>username is required</div>
+      
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" ngModel name="password" #password="ngModel"
+        pattern="^[a-z0-9_-]{8,15}$" placeholder="enter password" required />
+      <div class="alert alert-danger" *ngIf="password.touched && ! password.valid">
+        <div *ngIf="password.errors.pattern">password must contain both alphabet and number</div>
+        password is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email </label>
+      <input type="email" class="form-control" ngModel name="email" #email="ngModel" placeholder="enter email address"
+        pattern=".+@.+.com" required>
+      <div class="alert alert-danger" *ngIf="email.touched && ! email.valid">
+        <div *ngIf="email.errors.pattern">example: "abc@domain.com"</div> email address is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile </label>
+      <input type="number" class="form-control" ngModel name="mobile" #mobile="ngModel"
+        placeholder="enter mobile number" pattern="^[6-9][0-9]{9}$" required>
+      <div class="alert alert-danger" *ngIf="mobile.touched && ! mobile.valid">
+        <div *ngIf="mobile.errors.pattern">Invalid number</div>mobile number is required
+      </div>
+    </div>
+    <div class="form-actions" layout="row">
+      <div class="form-group" style="float:left">
+        <label for="Gender">Gender : </label>
+        <input type="radio" value="male" ngModel name="gender" required #gender="ngModel"> Male
+        <input type="radio" value="female" ngModel name="gender" required #gender="ngModel"> Female
+        <div *ngIf="gender.touched && gender.invalid">
+          Gender required.
+        </div>
+      </div>
+      <div class="form-group" style="float:right">
+        <label for="country">Nationality :</label>
+        <input list="countries" id="country" ngModel name="country" #country="ngModel" placeholder="enter country"
+          required />
+
+        <datalist id="countries">
+          <option value="India">
+          <option value="China">
+          <option value="Canada">
+          <option value="USA">
+          <option value="UK">
+        </datalist>
+      </div>
+    </div>
+    <br><br>
+    <div>
+      <input type="checkbox" ngModel name="tc" required #tc="ngModel">
+      <div style="color:black;align-content: center" *ngIf="tc.pristine || tc.dirty">I agree to <b>Terms &
+          Conditions</b></div>
+
+    </div>
+
+  </form>
+  <input type="submit" class="btn btn-primary" (click)="submit(signup)" [disabled]="!signup.valid" value="signUp">
+  <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+
+
+</div>

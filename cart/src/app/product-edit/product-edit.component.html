@@ -1,0 +1,46 @@
+
+<div class="row">
+    <div class="col-md-6">
+        <form #f="ngForm">
+            
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" [(ngModel)]="pro.title" name="title" class="form-control"  placeholder="enter title of product" required>
+             
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                <input type="number" id="price" [(ngModel)]="pro.price" name="price" class="form-control" placeholder="enter price of product" [min]="0" required>
+               
+                </div>
+               
+              </div>
+              <div class="form-group">
+                  <label for="category">Category</label>
+                  <select id="category" [(ngModel)]="pro.category"name="category" class="form-control" required >
+                    <option value=""></option>
+                    <option  *ngFor="let x of cate" [value]="x.name">{{x.name}}</option>
+                    </select> 
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Image Url</label>
+                    <input type="text" id="imageUrl" [(ngModel)]="pro.imageUrl" name="imageUrl" class="form-control" placeholder="enter url of product" url required>
+                   
+                  </div>
+                  
+          </form>
+          <input type="submit" class="btn btn-primary" (click)="save(f)"  value="Update">  
+    </div>
+    <div class="col-md-6"> 
+        <div class="card" style="width: 18rem;">
+            <img [src]="pro.imageUrl" style="width:200%" class="card-img-top" >
+            <div class="card-body" style="width:200%" >
+              <h5 class="card-title" >{{pro.title}}</h5>
+              <p class="card-text">{{ pro.price | currency }}</p>
+            </div>
+          </div>
+    </div>
+  </div>
+  

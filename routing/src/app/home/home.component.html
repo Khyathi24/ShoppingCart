@@ -1,0 +1,83 @@
+<h3>Welcome </h3>
+<div class="wraper" style="margin-left: 80px">
+  <input type="button" style="margin-right:100px" value="List" (click)="getList()"><br>
+  <div style="margin-right:1015px">
+   
+    <input type="text" [(ngModel)]="value" size="50" placeholder="Search in firstname, lastname, username, email ...">
+    
+  </div>
+  <table style="margin-left:20px;background-color: whitesmoke">
+
+    <thead>
+      <td> <b>S.No.</b> </td>
+      <td> <b>FirstName</b></td>
+      <td> <b>LastName</b></td>
+      <td> <b>UserName</b></td>
+      <td> <b>Password</b></td>
+      <td> <b>Email </b></td>
+      <td> <b>Mobile Number</b></td>
+      <td> <b>Gender</b></td>
+      <td> <b>Nationality</b></td>
+      <td><b> Actions</b></td>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of us| search:value ; let i=index">
+        <td>{{ i+1 }} </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.firstname | titlecase}}</div>
+
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.firstname"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.lastname |titlecase}}</div>
+
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.lastname"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.username|titlecase }}</div>
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.username"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.password }}</div>
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.password"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.email }}</div>
+          <div *ngIf="editData[user.id]"><input type="email" size=30 [(ngModel)]="user.email"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.mobile }}</div>
+          <div *ngIf="editData[user.id]"><input type="number" size=10 [(ngModel)]="user.mobile"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.gender |titlecase}}</div>
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.gender"></div>
+        </td>
+        <td>
+          <div *ngIf="!editData[user.id]">{{ user.country }}</div>
+          <div *ngIf="editData[user.id]"><input type="text" size=10 [(ngModel)]="user.country"></div>
+        </td>
+
+        <td>
+          <button type="button" *ngIf="!editData[user.id]" (click)="modify(user)" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+          <button type="button" *ngIf="editData[user.id]" (click)="update(user)" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-check"></span>
+          </button>
+          <!--<input type="button" *ngIf="!editData[user.id]" value="Modify " (click)="modify(user)">-->
+          <!---<input type="button" *ngIf="editData[user.id]" value="Update " (click)="update(user)">-->
+          <button type="button" (click)="delete(user)" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+          <!-- <span class="glyphicon glyphicon-trash"><input type="button" value="Delete "  (click)="delete(user)"></span>-->
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <br>
+  <div style="align-content:flex-end">
+    <input type="button" style="float:right" (click)="goBack()" value="Logout">
+  </div>

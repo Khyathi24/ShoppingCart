@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-3">
+    <div class="list-group  sticky-top">
+      <a routerLink="/" [class.active]='!category' class="list-group-item list-group-item-action">All Categories</a>
+      <a *ngFor="let c of categories" class="list-group-item list-group-item-action" routerLink='/'
+        [queryParams]="{category: c.name }" [class.active]="category===c.name">{{c.name}}
+      </a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <ng-container *ngFor="let p of filteredProducts ;let i=index">
+        <div class="col">
+          <div class="card" style="width: 30rem;">
+            <img [src]="p.imageUrl" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><b>{{p.title}}</b></h5>
+              <p class="card-text">{{p.price | currency}}</p>
+            </div>
+            <div class="card-footer"  *ngIf="showActions" style="padding:0px;">
+              <button (click)="addToCart(p)" *ngIf="getQuantity(p)===0;else update" class="btn btn-primary btn-block">Add to Cart</button>
+              <ng-template #update>
+                  <div class="row no-gutters">
+                    <div class="col-2">
+                      <button 
+                        (click)="removeFromCart(p)"
+                        class="btn btn-primary btn-block">-</button> 
+                    </div>
+                    <div class="col text-center">
+                      {{ getQuantity(p) }} in cart
+                    </div>
+                    <div class="col-2">
+                      <button 
+                        (click)="addToCart(p)"
+                        class="btn btn-primary btn-block">+</button> 
+                    </div>
+                  </div>
+                </ng-template>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="(i+1)% 2 === 0" class="w-100"></div> <br>
+      </ng-container>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,22 @@
+<a routerLink="/admin/products/new" class="btn btn-primary">NewProduct</a><br>
+<p>
+    <input type="text" [(ngModel)]="value" placeholder="Search product">   
+</p>
+<div class="row">
+    <ng-container *ngFor="let prod of products | search:value ;let i=index">
+      <div class="col">
+        <div class="card" style="width: 30rem;">
+          <img [src]="prod.imageUrl" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><b>{{prod.title}}</b></h5>
+            <p class="card-text">{{prod.price | currency}}</p>
+          </div>
+          <div class="card-footer" style="padding:0px;">
+              <button class="btn btn-secondary btn-block" (click)="edit(prod)">Edit</button>
+              <button class="btn btn-secondary btn-block" (click)="delete(prod)" >Delete</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="(i+1)% 2=== 0" class="w-100"></div> <br>
+    </ng-container>
+  </div>

@@ -1,0 +1,32 @@
+<table class="table">
+    <thead> 
+      <th>Title</th>
+      <th>Category</th> 
+      <th>Quantity</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cartitems">
+        <ng-container *ngIf="c.quantity!=0">
+        <td>{{c.title}}</td>
+        <td>{{c.category}}</td>
+        <td>{{c.quantity}}</td>
+        <td>{{c.price }}</td>
+        </ng-container>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+          <th id="total" colspan="3">Total amount to be paid :</th>
+          <td>{{total | currency}}</td>
+        </tr>
+       </tfoot>
+  </table>
+  <div style="align-content:left">
+    <button class="btn btn-primary" (click)="goBack()">Continue Shopping</button>
+  </div>
+  <br>
+<div style="align-content: right" >
+<button class="btn btn-primary" (click)="proceed()">Proceed</button>
+</div>
+  

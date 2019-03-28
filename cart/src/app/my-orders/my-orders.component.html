@@ -1,0 +1,24 @@
+<table class="table" style="background-color:whitesmoke">
+    <thead> 
+      <th>Title</th> 
+      <th>Quantity</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of items">
+        <td>{{c.title}}</td>
+        <td>{{c.quantity}}</td>
+        <td>{{c.price }}</td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="show">
+        <strong>
+         Order Placed!! will be delivered in 2-5 business days</strong>
+     </tfoot>
+     <tfoot *ngIf="!show">
+        <strong>&nbsp;
+        No Orders !!!  </strong>
+     </tfoot>
+  </table>
+
+  

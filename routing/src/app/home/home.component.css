@@ -1,0 +1,23 @@
+table {
+  border: 1px solid black;
+   width: 20%;
+
+}
+th{
+border: 1px solid black ;
+padding: 8px;
+}
+td{ border: 1px solid black;
+ padding: 8px;
+}
+div.wraper{
+  border: 1px solid black;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-right: 400px;
+  margin-left: 80px;
+  background-color: whitesmoke;
+}
+.glyphicon {
+  font-size: 20px;
+}

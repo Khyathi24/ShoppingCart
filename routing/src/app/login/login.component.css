@@ -1,0 +1,9 @@
+.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+.ng-valid.ng-dirty{
+  border: 1px solid green;
+}
+.glyphicon {
+  font-size: 30px;
+}
